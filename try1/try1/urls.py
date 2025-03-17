@@ -17,10 +17,22 @@ Including another URLconf
 
 from django.contrib import admin
 from django.urls import path
-from core.views import home,sucess,trail
+from core.views import home, sucess, trail
+from vege.views import delete_recepie, recepie, update_recepie
+from django.contrib.staticfiles.urls import staticfiles_urlpatterns
+from django.conf import settings
+from django.conf.urls.static import static
+
 urlpatterns = [
-    path('',home,name="home"),
-    path("sucess_page/",sucess,name="sucess_page"),
-    path("trail_page/",trail,name="trail_page"),
+    path("", home, name="home"),
+    path("recepie/", recepie, name="recepie"),
+    path("delete_recepie/<id>", delete_recepie, name="delete_recepie"),
+    path("update_recepie/<id>", update_recepie, name="update_recepie"),
+    path("sucess_page/", sucess, name="sucess_page"),
+    path("trail_page/", trail, name="trail_page"),
     path("admin/", admin.site.urls),
 ]
+
+if settings.DEBUG:
+    urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+urlpatterns += staticfiles_urlpatterns()
