@@ -22,6 +22,7 @@ from vege.views import delete_recepie, recepie, update_recepie
 from django.contrib.staticfiles.urls import staticfiles_urlpatterns
 from django.conf import settings
 from django.conf.urls.static import static
+from todo.views import delete_todo, home_todo, table_todo, update_todo
 
 urlpatterns = [
     path("", home, name="home"),
@@ -30,6 +31,10 @@ urlpatterns = [
     path("update_recepie/<id>", update_recepie, name="update_recepie"),
     path("sucess_page/", sucess, name="sucess_page"),
     path("trail_page/", trail, name="trail_page"),
+    path("todo/", home_todo, name="home_todo"),
+    path("delete_todo/<id>", delete_todo, name="delete_todo"),
+    path("update_todo/<id>", update_todo, name="update_todo"),
+    path("table_todo/", table_todo, name="update_todo"),
     path("admin/", admin.site.urls),
 ]
 

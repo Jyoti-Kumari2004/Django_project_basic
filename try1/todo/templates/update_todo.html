@@ -1,0 +1,21 @@
+{%extends 'base.html'%}
+{%block start %}
+<form class="col-6 mx-auto card p-3 shadow-lg" method="POST" enctype="multipart/form-data">
+    {%csrf_token%}
+    <h2>Update Task</h2>
+    <div class="mb-3">
+      <label for="exampleInputEmail1" class="form-label">Task Domain</label>
+      <input type="text" class="form-control"   name="task_domain" required value="{{todoItem.task_domain}}">
+    </div>
+    <div class="mb-3">
+      <label for="exampleInputPassword1" class="form-label">Task Description</label>
+      <textarea name="task_description"  class="form-control" name="task_description">{{todoItem.task_description}}</textarea>
+    </div>
+    <div class="mb-3">
+        <label for="exampleInputEmail1" class="form-label">Due Date</label>
+        <input type="date" class="form-control"  aria-describedby="emailHelp" name="task_due_date" value="{{todoItem.task_domain}}">
+      </div>
+    <button type="update" class="btn btn-warning">Submit</button>
+  </form>
+
+{%endblock%}

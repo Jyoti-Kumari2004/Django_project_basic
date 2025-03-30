@@ -17,15 +17,20 @@ def recepie(request):
         )
         return redirect("/recepie")
     queryset = Recepie.objects.all()
+
+    if request.GET.get("search"):
+        print(request.GET.get("search"))
+        queryset = queryset.filter(recepie_name__icontains=request.GET.get("search"))
+
     context = {"recepies": queryset}
-        
+
     return render(request, "recepie.html",context)  
 
 def delete_recepie(request, id):
     queryset=Recepie.objects.get(id=id)
     queryset.delete()
     return redirect("/recepie/")
-    
+
 def update_recepie(request,id):
     queryset=Recepie.objects.get(id=id)
     if request.method=="POST":
