@@ -18,7 +18,14 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path
 from core.views import home, sucess, trail
-from vege.views import delete_recepie, recepie, update_recepie
+from vege.views import (
+    delete_recepie,
+    login_page,
+    logout_page,
+    recepie,
+    register_page,
+    update_recepie,
+)
 from django.contrib.staticfiles.urls import staticfiles_urlpatterns
 from django.conf import settings
 from django.conf.urls.static import static
@@ -31,6 +38,9 @@ urlpatterns = [
     path("update_recepie/<id>", update_recepie, name="update_recepie"),
     path("sucess_page/", sucess, name="sucess_page"),
     path("trail_page/", trail, name="trail_page"),
+    path("login/", login_page, name="login_page"),
+    path("logout/", logout_page, name="login_page"),
+    path("register/", register_page, name="register_page"),
     path("todo/", home_todo, name="home_todo"),
     path("delete_todo/<id>", delete_todo, name="delete_todo"),
     path("update_todo/<id>", update_todo, name="update_todo"),
